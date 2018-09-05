@@ -10,9 +10,9 @@
 #              8   7   6  
 #  */   
 
-Inorder
-Preorder
-Postorder
-Levelorder
-height of tree
-sum of all nodes
+Inorder,
+Preorder,
+Postorder,
+Levelorder,
+height of tree,
+sum of all nodes,
