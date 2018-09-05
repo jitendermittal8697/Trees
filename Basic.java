@@ -8,8 +8,43 @@ class tree
         this.key = key;
         left = right = null;
     }
+    tree()
+    {
+    }
+    
+    // Left Root Right
+    void inorder(tree root)
+    {
+        if(root==null)
+            return;
+        inorder(root.left);
+        System.out.print(root.key + " ");
+        inorder(root.right);
+    }
+    
+    // Left Right Root 
+    void postorder(tree root)
+    {
+        if(root==null)
+            return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.key + " ");
+    }
+    
+    // Root Left Right
+    void preorder(tree root)
+    {
+        if(root==null)
+            return;
+        System.out.print(root.key + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+    
     public static void main(String args[])
     {
+        tree obj = new tree();
         tree node1 = new tree(1);
         tree node2 = new tree(2);
         tree node3 = new tree(3);
@@ -40,6 +75,15 @@ class tree
         */        
         System.out.println("Tree Created Successfully");
         
+        System.out.println("preorder");
+        obj.preorder(node1);
+        System.out.print("\n");
+        System.out.println("postorder");
+        obj.postorder(node1);
+        System.out.print("\n");
+        System.out.println("inorder");
+        obj.inorder(node1);
+        System.out.print("\n");
         
     }
 }
