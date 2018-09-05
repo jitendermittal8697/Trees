@@ -1,6 +1,8 @@
 class tree
 {
+    
     int key;
+    int sum;
     tree left;
     tree right;
     tree(int key)
@@ -8,6 +10,7 @@ class tree
         this.key = key;
         left = right = null;
     }
+    
     tree()
     {
     }
@@ -38,12 +41,14 @@ class tree
         if(root==null)
             return;
         System.out.print(root.key + " ");
+        sum=sum+root.key;
         preorder(root.left);
         preorder(root.right);
     }
     
     public static void main(String args[])
     {
+        
         tree obj = new tree();
         tree node1 = new tree(1);
         tree node2 = new tree(2);
@@ -72,9 +77,9 @@ class tree
                 4   9   5
                / \     /
               8   7   6  
-        */        
-        System.out.println("Tree Created Successfully");
+        */  
         
+        System.out.println("Tree Created Successfully");
         System.out.println("preorder");
         obj.preorder(node1);
         System.out.print("\n");
@@ -83,7 +88,8 @@ class tree
         System.out.print("\n");
         System.out.println("inorder");
         obj.inorder(node1);
-        System.out.print("\n");
+        System.out.print("sum "+obj.sum);
         
     }
+
 }
