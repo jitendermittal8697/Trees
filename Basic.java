@@ -61,6 +61,28 @@ class tree
                 return rightHeight+1;
         }
     }
+    
+    void printNodeByLevels(tree root)
+    {
+        for(int i = 1 ; i <= maxHeight(root) ; i++)
+        {
+            levelOrder(root,i);
+        }
+    }
+    
+    void levelOrder(tree root, int i)
+    {
+        if(root == null)
+            return;
+        if(i==1)
+            System.out.print(root.key + " ");
+        else if(i>1)
+        {
+            levelOrder(root.left,i-1);
+            levelOrder(root.right,i-1);
+        }
+    }
+    
     public static void main(String args[])
     {
         
@@ -106,6 +128,7 @@ class tree
         System.out.print("\nsum of all nodes   "+obj.sum);
         System.out.print("\nHeight   ");
         System.out.println(obj.maxHeight(node1));
+        obj.printNodeByLevels(node1);
         
         
         
