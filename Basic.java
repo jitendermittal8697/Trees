@@ -46,6 +46,21 @@ class tree
         preorder(root.right);
     }
     
+    int maxHeight(tree root)
+    {
+        if(root==null)
+            return 0;
+        else
+        {
+            int leftHeight = maxHeight(root.left);
+            int rightHeight = maxHeight(root.right);
+            
+            if(leftHeight>rightHeight)
+                return leftHeight+1;
+            else
+                return rightHeight+1;
+        }
+    }
     public static void main(String args[])
     {
         
@@ -88,7 +103,11 @@ class tree
         System.out.print("\n");
         System.out.println("inorder");
         obj.inorder(node1);
-        System.out.print("sum "+obj.sum);
+        System.out.print("\nsum of all nodes   "+obj.sum);
+        System.out.print("\nHeight   ");
+        System.out.println(obj.maxHeight(node1));
+        
+        
         
     }
 
