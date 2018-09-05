@@ -83,6 +83,36 @@ class tree
         }
     }
     
+    void printNodeByLevelsinSpiral(tree root)
+    {
+        boolean b = false;
+        for(int i = 1 ; i <= maxHeight(root) ; i++)
+        {
+            spiralOrder(root,i,b);
+            b = !b;
+        }
+    }
+    
+    void spiralOrder(tree root, int i,boolean bl)
+    {
+        if(root == null)
+            return;
+        if(i==1)
+            System.out.print(root.key + " ");
+        else if(i>1)
+        {
+            if(bl==true)
+            {
+                spiralOrder(root.left,i-1,bl);
+                spiralOrder(root.right,i-1,bl);
+            }
+            else
+            {
+                spiralOrder(root.right,i-1,bl);
+                spiralOrder(root.left,i-1,bl);
+            }
+        }
+    }
     public static void main(String args[])
     {
         
@@ -129,6 +159,8 @@ class tree
         System.out.print("\nHeight   ");
         System.out.println(obj.maxHeight(node1));
         obj.printNodeByLevels(node1);
+        System.out.print("\n");
+        obj.printNodeByLevelsinSpiral(node1);
         
         
         
