@@ -5,6 +5,8 @@ class tree
     int sum;
     tree left;
     tree right;
+    int toBeZero = 0;
+    static int count;
     tree(int key)
     {
         this.key = key;
@@ -23,6 +25,7 @@ class tree
         inorder(root.left);
         System.out.print(root.key + " ");
         inorder(root.right);
+        
     }
     
     // Left Right Root 
@@ -93,7 +96,7 @@ class tree
         }
     }
     
-    void spiralOrder(tree root, int i,boolean bl)
+    void spiralOrder(tree root, int i, boolean bl)
     {
         if(root == null)
             return;
@@ -113,6 +116,38 @@ class tree
             }
         }
     }
+    
+    
+    void countNodesAtLevel(tree root, int height)
+    {
+        if(root == null)
+            return;
+        if(height == 1)
+            count++;
+        if(height>1)
+        {
+            countNodesAtLevel(root.left,height-1);
+            countNodesAtLevel(root.right,height-1);
+        }
+    }
+    
+    void NthNodeAtHeight(tree root, int height, int n)
+    {
+        if(root == null)
+            return;
+        if(height == 1)
+        {
+            toBeZero++;
+            if(n == toBeZero)
+                System.out.println(root.key);
+        }
+        if(height>1)
+        {
+            NthNodeAtHeight(root.left,height-1, n);
+            NthNodeAtHeight(root.right,height-1, n);
+        }
+    }
+    
     public static void main(String args[])
     {
         
@@ -126,6 +161,9 @@ class tree
         tree node7 = new tree(7);
         tree node8 = new tree(8);
         tree node9 = new tree(9);
+        tree node10 = new tree(10);
+        tree node11 = new tree(11);
+        tree node12 = new tree(12);
         
         node1.left = node2;
         node1.right = node3;
@@ -135,6 +173,9 @@ class tree
         node4.left = node8;
         node4.right = node7;
         node5.left = node6;
+        node5.right = node10;
+        node6.left = node11;
+        node8.left = node12;
         
         /*
                     1 
@@ -142,27 +183,36 @@ class tree
                   2   3
                  / \   \
                 4   9   5
-               / \     /
-              8   7   6  
+               / \     / \
+              8   7   6   10
+             /       /
+            12      11
         */  
         
         System.out.println("Tree Created Successfully");
-        System.out.println("preorder");
+        System.out.print("preorder  ");
         obj.preorder(node1);
-        System.out.print("\n");
-        System.out.println("postorder");
+        System.out.print("\npostorder  ");
         obj.postorder(node1);
-        System.out.print("\n");
-        System.out.println("inorder");
+        System.out.print("\ninorder  ");
         obj.inorder(node1);
         System.out.print("\nsum of all nodes   "+obj.sum);
         System.out.print("\nHeight   ");
-        System.out.println(obj.maxHeight(node1));
+        System.out.print(obj.maxHeight(node1));
+        System.out.print("\nLevel Order   ");
         obj.printNodeByLevels(node1);
-        System.out.print("\n");
+        System.out.print("\nSpiral Order  ");
         obj.printNodeByLevelsinSpiral(node1);
+        obj.countNodesAtLevel(node1,obj.maxHeight(node1));
+        System.out.print("\nNumber of Nodes at Last Level is : " + obj.count + "\n");
         
-        
+        //for finding deepest node from the right, the Only algorithm is LevelOrder Traversal
+        System.out.print("deepest node from the right is : ");
+        obj.NthNodeAtHeight(node1,obj.maxHeight(node1),obj.count);
+        //for finding deepest node from the left, the Only algorithm is LevelOrder Traversal
+        System.out.print("deepest node from the left is : ");
+        obj.toBeZero = 0;
+        obj.NthNodeAtHeight(node1,obj.maxHeight(node1),1);
         
     }
 
