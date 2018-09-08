@@ -1,15 +1,5 @@
 # Trees
 # Basic Tree Created
-#  /*
-#                    1 
-#                   / \
-#                  2   3
-#                 / \   \
-#                4   9   5
-#               / \     /
-#              8   7   6  
-#  */   
-
 Inorder,
 Preorder,
 Postorder,
@@ -17,3 +7,5 @@ Levelorder,
 Spiralorder,
 height of tree,
 sum of all nodes,
+Number of Nodes At A Level,
+Nth Node At a Level,
