@@ -73,6 +73,14 @@ class tree
         }
     }
     
+    void printNodeByLevelsinReverse(tree root)
+    {
+        for(int i = maxHeight(root) ; i >=1  ; i--)
+        {
+            levelOrder(root,i);
+        }
+    }
+    
     void levelOrder(tree root, int i)
     {
         if(root == null)
@@ -116,7 +124,6 @@ class tree
             }
         }
     }
-    
     
     void countNodesAtLevel(tree root, int height)
     {
@@ -213,6 +220,9 @@ class tree
         System.out.print("deepest node from the left is : ");
         obj.toBeZero = 0;
         obj.NthNodeAtHeight(node1,obj.maxHeight(node1),1);
+        
+        System.out.print("Bottom Up Traversal of Tree : ");
+        obj.printNodeByLevelsinReverse(node1);
         
     }
 
